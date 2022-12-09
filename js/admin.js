@@ -6,11 +6,7 @@ let orderList = [];
 
 function getOrderList() {
   axios
-    .get(`${adminApiUrl}`, {
-      headers: {
-        Authorization: token,
-      },
-    })
+    .get(`${adminApiUrl}`, config)
     .then((res) => {
       orderList = res.data.orders;
       renderOrderList(orderList);
@@ -26,9 +22,12 @@ const orderTableBody = document.querySelector(".order-table-body");
 
 function renderOrderList(data) {
   let listStr = "";
-
   let orderStatus = "";
-
+  if(data.length === 0){
+    deleteAllBtn.classList.add('d-none');
+  }else{
+    deleteAllBtn.classList.remove('d-none');
+  }
   data.forEach((i) => {
     let productStr = "";
     let timeStamp = new Date(i.createdAt * 1000);
@@ -102,14 +101,14 @@ function deleteOrder(id) {
           getOrderList();
           alert(`已刪除該筆訂單`);
         })
-        .catch((err) => console.log(err.response));
+        .catch((err) => alert('刪除失敗'));
     }
   });
 }
 // 訂單處理狀態
 function renderOrderStatus(status, id) {
   let newStatus;
-  if (status == "true") {
+  if (status === "true") {
     newStatus = false;
   } else {
     newStatus = true;
@@ -133,7 +132,7 @@ function renderOrderStatus(status, id) {
       getOrderList();
       alert(`已更新訂單資訊`);
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => alert('更新失敗'));
 }
 
 // 刪除全部訂單
@@ -141,16 +140,12 @@ const deleteAllBtn = document.querySelector(".discardAllBtn");
 deleteAllBtn.addEventListener("click", function (e) {
   e.preventDefault();
   axios
-    .delete(`${adminApiUrl}`, {
-      headers: {
-        Authorization: token,
-      },
-    })
+    .delete(`${adminApiUrl}`, config)
     .then((res) => {
       getOrderList();
       alert(`已刪除全部訂單`);
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => alert('刪除失敗'));
 });
 
 // 全產品類別營收比重
@@ -158,7 +153,7 @@ function renderCategoryC3(orderList) {
   let total = {};
   orderList.forEach((i) => {
     i.products.forEach((item) => {
-      if (total[item.category] == undefined) {
+      if (total[item.category] === undefined) {
         total[item.category] = item.price * item.quantity;
       } else {
         total[item.category] += item.price * item.quantity;
@@ -193,7 +188,7 @@ function renderProductC3(orderList) {
   let total = {};
   orderList.forEach((i) => {
     i.products.forEach((item) => {
-      if (total[item.title] == undefined) {
+      if (total[item.title] === undefined) {
         total[item.title] = item.price * item.quantity;
       } else {
         total[item.title] += item.price * item.quantity;
@@ -246,7 +241,7 @@ chartBtn.addEventListener("click", function (e) {
   e.target.classList.add("active");
   chartBlock.forEach((i) => {
     i.classList.add("d-none");
-    if (i.dataset.chartblock == e.target.getAttribute("data-chart")) {
+    if (i.dataset.chartblock === e.target.getAttribute("data-chart")) {
       i.classList.remove("d-none");
     }
   });

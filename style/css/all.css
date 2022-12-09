@@ -267,7 +267,8 @@ body {
   margin: 0 auto;
 }
 
-.compare-table th, .compare-table td {
+.compare-table th,
+.compare-table td {
   text-align: center;
   padding: 15px 0;
 }
@@ -295,7 +296,8 @@ body {
   .compare-table {
     width: 500px;
   }
-  .compare-table th, .compare-table td {
+  .compare-table th,
+  .compare-table td {
     padding: 10px 0;
   }
   .compare-table th {
@@ -337,7 +339,8 @@ body {
   display: none;
 }
 
-.gallery-top, .gallery-bottom {
+.gallery-top,
+.gallery-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,11 +436,15 @@ body {
   }
 }
 
-.transport-intro li:nth-child(1), .transport-intro li:nth-child(2), .transport-intro li:nth-child(3) {
+.transport-intro li:nth-child(1),
+.transport-intro li:nth-child(2),
+.transport-intro li:nth-child(3) {
   position: relative;
 }
 
-.transport-intro li:nth-child(1)::after, .transport-intro li:nth-child(2)::after, .transport-intro li:nth-child(3)::after {
+.transport-intro li:nth-child(1)::after,
+.transport-intro li:nth-child(2)::after,
+.transport-intro li:nth-child(3)::after {
   content: "";
   position: absolute;
   top: 49px;
@@ -449,7 +456,9 @@ body {
 }
 
 @media (max-width: 767px) {
-  .transport-intro li:nth-child(1)::after, .transport-intro li:nth-child(2)::after, .transport-intro li:nth-child(3)::after {
+  .transport-intro li:nth-child(1)::after,
+  .transport-intro li:nth-child(2)::after,
+  .transport-intro li:nth-child(3)::after {
     position: static;
     margin-top: 25px;
     border: 10px solid #000000;
@@ -559,7 +568,8 @@ body {
   background-color: #301E5F;
 }
 
-.productCard a, .productCard h3 {
+.productCard a,
+.productCard h3 {
   font-size: 1.25rem;
 }
 
@@ -603,7 +613,8 @@ body {
   font-size: 1.25rem;
 }
 
-.shoppingCart-table th, .shoppingCart-table td {
+.shoppingCart-table th,
+.shoppingCart-table td {
   padding: 15px;
   vertical-align: middle;
 }
@@ -616,7 +627,8 @@ body {
   border-bottom: 1px solid #B9B9B9;
 }
 
-.shoppingCart-table tr:first-child, .shoppingCart-table tr:last-child {
+.shoppingCart-table tr:first-child,
+.shoppingCart-table tr:last-child {
   border-bottom: 0;
 }
 
@@ -737,6 +749,17 @@ body {
 
 .orderInfo-btn:hover {
   background-color: #301E5F;
+}
+
+.quantityBtn {
+  padding: 8px;
+  border: 1px solid #DACBFF;
+  text-decoration: none;
+}
+
+.quantityBtn:hover {
+  background: #5434A7;
+  color: white;
 }
 
 .orderPage-list {
